@@ -9,9 +9,13 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Created by garrytrue on 12.03.17.
  */
-public class StudentRESTRepository implements CRUDRepository<Student> {
+public class StudentRESTRepository extends AbstractRepository {
     private final List<Student> list = new ArrayList<>();
     private final AtomicLong atomicLong = new AtomicLong();
+
+    public StudentRESTRepository(CRUDRepository<Student> succesor) {
+        super(succesor);
+    }
 
     @Override
     public Student save(Student data) {

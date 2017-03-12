@@ -15,7 +15,6 @@ public final class TestUtils {
 
     public static Student createStudent() {
         Student student = new Student("FirstName 0", "LastName 0");
-        student.setId(0);
         return student;
     }
 

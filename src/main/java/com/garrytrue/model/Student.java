@@ -46,15 +46,13 @@ public class Student {
 
         Student student = (Student) o;
 
-        if (id != student.id) return false;
         if (firstName != null ? !firstName.equals(student.firstName) : student.firstName != null) return false;
         return secondName != null ? secondName.equals(student.secondName) : student.secondName == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        int result = firstName != null ? firstName.hashCode() : 0;
         result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
         return result;
     }
