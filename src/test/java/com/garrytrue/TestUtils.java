@@ -2,7 +2,9 @@ package com.garrytrue;
 
 import com.garrytrue.model.Student;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,18 +15,26 @@ public final class TestUtils {
         throw new AssertionError("Don't make instance");
     }
 
-    public static Student createStudent() {
-        Student student = new Student("FirstName 0", "LastName 0");
-        student.setId(0);
+    public static Student createStudent(String firstName, String lastName) {
+        Student student = new Student(firstName, lastName);
         return student;
     }
 
     public static Map<Long, Student> generateStudents(int count) {
         Map<Long, Student> map = new HashMap<>();
         for (int i = 0; i < count; i++) {
-            map.put((long) i, new Student("FirstName " + i, "LastName " + i));
+            map.put(Long.valueOf(i), createStudent("FirstName " + i, "LastName " + i));
         }
         return map;
     }
 
+    public static List<Student> generateStudentList(int count) {
+        List<Student> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            Student student = createStudent("FirstName " + i, "LastName " + i);
+            student.setId(i);
+            list.add(student);
+        }
+        return list;
+    }
 }
